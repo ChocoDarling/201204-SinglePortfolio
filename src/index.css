@@ -1,0 +1,56 @@
+* {
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  /* scrollbar-width: none; */
+}
+/* 
+::-webkit-scrollbar {
+  display: none;
+} */
+
+body {
+  background-color: #fdfcf0;
+}
+
+.inner {
+  width: 980px;
+  margin: auto;
+}
+
+.center-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-font {
+  height: 0.9em;
+  line-height: 1em;
+  font-size: 4em;
+  font-family: 'Bungee Inline', cursive;
+  background-color: #fef8dc;
+}
+
+.list-font {
+  font-size: 3em;
+  margin: 20px 0 10px;
+  font-family: 'Black Ops One', cursive;
+}
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
