@@ -66,7 +66,6 @@ export const RegisterForm = ({ history }) => {
     e.preventDefault();
     const { id, password, passwordConfirm, username, phone, email } = form;
     if (password !== passwordConfirm) {
-      passwordConfirm = '비밀번호를 확인해주세요';
       return;
     }
     dispatch(register({ id, password, username, phone, email }));
