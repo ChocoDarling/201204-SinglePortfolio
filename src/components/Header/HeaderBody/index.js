@@ -7,6 +7,27 @@ import { RiLoginBoxLine, RiLogoutBoxLine } from 'react-icons/ri';
 const HeaderBodyBox = styled.div`
   position: relative;
   height: 120px;
+  div.login-box {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 28px;
+    right: 0;
+    svg {
+      font-size: 64px;
+    }
+    > div {
+      display: inline-flex;
+      flex-direction: column;
+      margin-left: 10px;
+      text-align: right;
+      height: 64px;
+      align-items: flex-end;
+      > p {
+        font-size: 24px;
+      }
+    }
+  }
 `;
 
 function HeaderBody({ movieNm, user, onLogout }) {
@@ -14,33 +35,19 @@ function HeaderBody({ movieNm, user, onLogout }) {
     <HeaderBodyBox className="inner">
       <HeaderBodyInner>{movieNm ? movieNm : ''}</HeaderBodyInner>
       {user ? (
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '24px',
-            right: '0',
-            fontSize: '1.5em',
-          }}
-        >
-          {user.name}님 어서오세요
-          <div
-            onClick={onLogout}
-            style={{ display: 'inline-block', marginLeft: '10px' }}
-          >
+        <div className="login-box">
+          <div>
+            <p>{user.name} 님</p>
+            <p>어서오세요</p>
+          </div>
+          <div onClick={onLogout}>
             <RiLogoutBoxLine />
           </div>
         </div>
       ) : (
         <>
           <Link to="/auth/login">
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '24px',
-                right: '0',
-                fontSize: '1.5em',
-              }}
-            >
+            <div className="login-box">
               <RiLoginBoxLine />
             </div>
           </Link>
