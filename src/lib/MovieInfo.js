@@ -23,7 +23,7 @@ export const getBoxOffice = async (searchKey, searchType) =>
 
 export const getMovieYoutube = async (searchKey) =>
   (
-    await client.post('http://localhost:4000/api/youtube', {
+    await client.post('/api/youtube', {
       searchKey,
     })
   ).data;
