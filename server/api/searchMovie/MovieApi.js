@@ -44,12 +44,20 @@ async function getBoxOffice(ctx) {
       return tempObj;
     });
     for (let i = 0; i < ctx.body.length; i++) {
-      while (!ctx.body[i].poster) {
-        const naver = await getPosterInNaver(ctx.body[i].movieNm);
+      let naver;
+      for (let j = 0; j < 10; j++) {
+        naver = await getPosterInNaver(ctx.body[i].movieNm);
         if (naver) {
           ctx.body[i].movieNmEn = naver[0];
           ctx.body[i].poster = naver[1];
         }
+        if (ctx.body[i].poster) break;
+      }
+      if (!ctx.body[i].poster) {
+        console.log(naver);
+        console.log(ctx.body[i].movieNm);
+        ctx.body[i].movieNmEn = 'none';
+        ctx.body[i].poster = 'none';
       }
     }
   } catch (error) {

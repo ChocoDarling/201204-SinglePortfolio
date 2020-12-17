@@ -4,7 +4,6 @@ async function searchYoutube(ctx) {
   try {
     const tempSearchHTML = await axios.get(
       `https://www.youtube.com/results?search_query=${encodeURI(
-        // `https://www.youtuawrcawecbe.com/results?search_query=${encodeURI(
         ctx.request.body.searchKey,
       )}+${encodeURI('예고편')}`,
     );

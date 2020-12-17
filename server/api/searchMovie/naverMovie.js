@@ -16,8 +16,11 @@ async function getPosterInNaver(searchKey) {
         'X-Naver-Client-Secret': SECRET_KEY,
       },
     });
-    const item = items.find((v) => v.title == `<b>${searchKey}</b>`);
-    return [item.subtitle, item.image];
+    const itemArr = items.filter((v) => v.title === `<b>${searchKey}</b>`);
+    for (let i = 0; i < itemArr.length; i++) {
+      if (itemArr[i].image) return [itemArr[i].subtitle, itemArr[i].image];
+    }
+    return ['', ''];
   } catch (error) {}
 }
 

@@ -60,6 +60,7 @@ function MovieList({ listName, searchKey }) {
   }, [listName]);
 
   function buttonClick(e, arrow) {
+    console.log(movieArr);
     const elem = e.target.parentNode.parentNode.querySelector('.list-box');
     let plus = -1;
     if (arrow) plus = 1;
