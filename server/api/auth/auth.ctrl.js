@@ -4,7 +4,7 @@ const User = require('../../models/user');
 const register = async (ctx) => {
   const schema = Joi.object().keys({
     username: Joi.string().alphanum().min(5).max(20).required(),
-    name: Joi.string().alphanum().min(5).max(20).required(),
+    name: Joi.string().min(2).max(20).required(),
     phone: Joi.string().min(10).max(11).required(),
     email: Joi.string().email().required(),
     password: Joi.string().required(),
