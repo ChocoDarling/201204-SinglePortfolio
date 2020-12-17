@@ -1,6 +1,7 @@
 const axios = require('axios');
 
 async function searchYoutube(ctx) {
+  console.log(ctx);
   try {
     const tempSearchHTML = await axios.get(
       `https://www.youtube.com/results?search_query=${encodeURI(
