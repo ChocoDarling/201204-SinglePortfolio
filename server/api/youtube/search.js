@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-async function searchYoutube(ctx) {
+async function search(ctx) {
   console.log('ctx.request.body.searchKey');
   console.log(ctx.request.body.searchKey);
   try {
@@ -54,4 +54,4 @@ async function searchYoutube(ctx) {
   }
 }
 
-module.exports = searchYoutube;
+module.exports = search;
