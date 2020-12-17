@@ -89,7 +89,6 @@ function BodyTop(props) {
       setYoutubeIdArr([]);
     } else if (youtubeIdArr.length === 0) {
       try {
-        console.log(movieNm);
         if (movieNm) {
           setYoutubeIdArr(await getMovieYoutube(movieNm));
           setNowList([]);
