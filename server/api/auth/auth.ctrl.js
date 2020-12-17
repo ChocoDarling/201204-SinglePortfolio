@@ -3,8 +3,8 @@ const User = require('../../models/user');
 // 01012341234;
 const register = async (ctx) => {
   const schema = Joi.object().keys({
-    id: Joi.string().alphanum().min(3).max(20).required(),
-    username: Joi.string().alphanum().min(2).max(20).required(),
+    username: Joi.string().alphanum().min(5).max(20).required(),
+    name: Joi.string().alphanum().min(5).max(20).required(),
     phone: Joi.string().min(10).max(11).required(),
     email: Joi.string().email().required(),
     password: Joi.string().required(),
@@ -15,15 +15,15 @@ const register = async (ctx) => {
     ctx.body = result.error;
     return;
   }
-  const { id, username, password, phone, email } = ctx.request.body;
+  const { username, password, name, phone, email } = ctx.request.body;
   try {
-    const exists = await User.findByUserId(id);
+    const exists = await User.findByUsername(username);
     if (exists) {
       ctx.body = '이미 존재하는 아이디입니다.';
       ctx.status = 409;
       return;
     }
-    const user = new User({ id, username, phone, email });
+    const user = new User({ username, name, phone, email });
 
     await user.setPassword(password);
     await user.save();
@@ -38,13 +38,14 @@ const register = async (ctx) => {
   }
 };
 const login = async (ctx) => {
-  const { id, password } = ctx.request.body;
-  if (!id || !password) {
+  const { username, password } = ctx.request.body;
+  console.log(username, password);
+  if (!username || !password) {
     ctx.status = 401;
     return;
   }
   try {
-    const user = await User.findByUserId(id);
+    const user = await User.findByUsername(username);
     if (!user) {
       ctx.status = 401;
       return;

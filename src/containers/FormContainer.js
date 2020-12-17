@@ -15,8 +15,8 @@ export const RegisterForm = ({ history }) => {
 
   const inputArr = [
     {
-      autoComplete: 'id',
-      name: 'id',
+      autoComplete: 'username',
+      name: 'username',
       nameKo: '아이디',
       type: 'text',
     },
@@ -27,25 +27,21 @@ export const RegisterForm = ({ history }) => {
       type: 'password',
     },
     {
-      autoComplete: 'password',
       name: 'passwordConfirm',
       nameKo: '비밀번호 확인',
       type: 'password',
     },
     {
-      autoComplete: 'username',
-      name: 'username',
+      name: 'name',
       nameKo: '이름',
       type: 'text',
     },
     {
-      autoComplete: 'phone',
       name: 'phone',
       nameKo: '전화번호',
       type: 'text',
     },
     {
-      autoComplete: 'email',
       name: 'email',
       nameKo: '이메일',
       type: 'email',
@@ -64,11 +60,11 @@ export const RegisterForm = ({ history }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const { id, password, passwordConfirm, username, phone, email } = form;
+    const { username, password, passwordConfirm, name, phone, email } = form;
     if (password !== passwordConfirm) {
       return;
     }
-    dispatch(register({ id, password, username, phone, email }));
+    dispatch(register({ username, password, name, phone, email }));
   };
 
   useEffect(() => {
@@ -77,21 +73,15 @@ export const RegisterForm = ({ history }) => {
 
   useEffect(() => {
     if (authError) {
-      console.log('오류 발생');
-      console.log(authError);
       return;
     }
     if (auth) {
-      console.log('회원가입 성공');
-      console.log(auth);
       dispatch(check());
     }
   }, [auth, authError, dispatch]);
 
   useEffect(() => {
     if (user) {
-      console.log('check API 성공');
-      console.log(user);
       history.push('/');
       try {
         localStorage.setItem('user', JSON.stringify(user));
@@ -124,8 +114,8 @@ export const LoginForm = ({ history }) => {
 
   const inputArr = [
     {
-      autoComplete: 'id',
-      name: 'id',
+      autoComplete: 'username',
+      name: 'username',
       nameKo: '아이디',
       type: 'text',
     },
@@ -150,8 +140,8 @@ export const LoginForm = ({ history }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const { id, password } = form;
-    dispatch(login({ id, password }));
+    const { username, password } = form;
+    dispatch(login({ username, password }));
   };
 
   useEffect(() => {
@@ -160,13 +150,9 @@ export const LoginForm = ({ history }) => {
 
   useEffect(() => {
     if (authError) {
-      console.log('오류 발생');
-      console.log(authError);
       return;
     }
     if (auth) {
-      console.log('로그인 성공');
-      console.log(auth);
       dispatch(check());
     }
   }, [auth, authError, dispatch]);

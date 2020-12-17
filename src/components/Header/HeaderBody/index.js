@@ -10,7 +10,6 @@ const HeaderBodyBox = styled.div`
 `;
 
 function HeaderBody({ movieNm, user, onLogout }) {
-  console.log(user);
   return (
     <HeaderBodyBox className="inner">
       <HeaderBodyInner>{movieNm ? movieNm : ''}</HeaderBodyInner>
@@ -23,7 +22,7 @@ function HeaderBody({ movieNm, user, onLogout }) {
             fontSize: '1.5em',
           }}
         >
-          {user.username}님 어서오세요
+          {user.name}님 어서오세요
           <div
             onClick={onLogout}
             style={{ display: 'inline-block', marginLeft: '10px' }}

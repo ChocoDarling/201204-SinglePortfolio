@@ -1,16 +1,16 @@
 import client from './axiosCreate';
 
-export const login = ({ id, password }) =>
+export const login = ({ username, password }) =>
   client.post('/api/auth/login', {
-    id,
+    username,
     password,
   });
 
-export const register = ({ id, password, username, phone, email }) =>
+export const register = ({ username, password, name, phone, email }) =>
   client.post('/api/auth/register', {
-    id,
-    password,
     username,
+    password,
+    name,
     phone,
     email,
   });

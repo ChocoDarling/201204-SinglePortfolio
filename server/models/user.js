@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken');
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
-  id: String,
   username: String,
   hashedPassword: String,
+  name: String,
   phone: String,
   email: String,
 });
@@ -21,8 +21,8 @@ UserSchema.methods.checkPassword = async function (password) {
   return result; // true / false
 };
 
-UserSchema.statics.findByUserId = function (id) {
-  return this.findOne({ id });
+UserSchema.statics.findByUsername = function (username) {
+  return this.findOne({ username });
 };
 
 UserSchema.methods.serialize = function () {
@@ -35,8 +35,8 @@ UserSchema.methods.generateToken = function () {
   const token = jwt.sign(
     {
       _id: this._id,
-      id: this.id,
       username: this.username,
+      name: this.name,
     },
     process.env.JWT_SECRET,
     {

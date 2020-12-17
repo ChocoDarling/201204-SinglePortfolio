@@ -6,7 +6,6 @@ function MainPage({ match, history }) {
   const [movieNm, setMovieNm] = useState('이웃사촌');
   useEffect(() => {
     if (match.params.movieNm && match.params.movieNm !== 'auth') {
-      console.log(match.params.movieNm);
       setMovieNm(match.params.movieNm);
       match.params = {};
       history.push('/');

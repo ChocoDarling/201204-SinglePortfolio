@@ -46,7 +46,7 @@ function AuthFrom({ title, inputArr, other, form, onSubmit, onChange }) {
         {inputArr.map((v, i) => (
           <input
             key={v + i}
-            autoComplete={`new-${v.autoComplete}`}
+            autoComplete={v.autoComplete ? `new-${v.autoComplete}` : ''}
             name={v.name}
             placeholder={v.nameKo}
             type={v.type}
